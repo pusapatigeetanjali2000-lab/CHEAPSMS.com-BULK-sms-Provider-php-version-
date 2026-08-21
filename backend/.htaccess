@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /backend/
+
+# Redirect .php to clean URL
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^(.+)\.php$ /backend/$1 [R=301,L]
+
+# Internally load .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/.]+)/?$ $1.php [L]
