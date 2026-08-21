@@ -1,0 +1,9 @@
+User-agent: *
+
+# Block system folders
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /assets/
+
+# Sitemap
+Sitemap: https://www.cheapsms.com/sitemap.xml
