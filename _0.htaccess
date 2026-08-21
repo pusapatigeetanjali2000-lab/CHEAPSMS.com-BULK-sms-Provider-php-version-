@@ -1,0 +1,30 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# -----------------------------------
+# Remove .php extension from URL
+# Example:
+# /login  -> login.php
+# -----------------------------------
+
+# If request is not a real file or directory
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Internally rewrite /page to /page.php
+RewriteRule ^([^/.]+)$ $1.php [L]
+
+# -----------------------------------
+# Redirect existing .php URLs to clean URLs
+# Example:
+# /login.php -> /login
+# -----------------------------------
+
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# -----------------------------------
+# Optional: Custom 404 Page
+# -----------------------------------
+
+ErrorDocument 404 /404.php

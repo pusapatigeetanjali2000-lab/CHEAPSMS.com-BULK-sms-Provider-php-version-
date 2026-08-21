@@ -1,0 +1,54 @@
+RewriteEngine On
+# Redirect old voiceqos URL to actual page
+RewriteRule ^voiceqos/?$ /voice-qos [R=301,L,NC]
+# Redirect old voicebroadcasting URL to actual page
+RewriteRule ^voicebroadcasting/?$ /voice-broadcasting [R=301,L,NC]
+# Redirect old twoway-bulksms-services URL to actual page
+RewriteRule ^twoway-bulksms-services/?$ /two-way-bulksms-services [R=301,L,NC]
+# Redirect old terms URL to actual Terms & Conditions page
+RewriteRule ^terms/?$ /terms-and-conditions [R=301,L,NC]
+# Redirect old siptrunk URL to homepage
+RewriteRule ^siptrunk/?$ / [R=301,L,NC]
+# Redirect old privacy URL to actual Privacy Policy page
+RewriteRule ^privacy/?$ /privacy-policy [R=301,L,NC]
+# Redirect old marketing-promo-india URL to homepage
+RewriteRule ^marketing-promo-india/?$ / [R=301,L,NC]
+# Redirect old ivr URL to actual IVRS page
+RewriteRule ^ivr/?$ /ivrs-interactive-voice-response-system [R=301,L,NC]
+# Redirect old didnumbers URL to homepage
+RewriteRule ^didnumbers/?$ / [R=301,L,NC]
+# Redirect old cloudpbx URL to homepage
+RewriteRule ^cloudpbx/?$ / [R=301,L,NC]
+# Redirect old bulk-whatsapp-global URL to actual page
+RewriteRule ^bulk-whatsapp-global/?$ /bulk-whatsapp-messages-global [R=301,L,NC]
+# Redirect old voip URL to actual VoIP page
+RewriteRule ^voip/?$ /voip-voice-over-internet-protocol [R=301,L,NC]
+# Redirect old bulk-whatsapp-india URL to actual page
+RewriteRule ^bulk-whatsapp-india/?$ /bulk-whatsapp-messages-india [R=301,L,NC]
+# Redirect old dltregistration.aspx URL to homepage
+RewriteRule ^dltregistration\.aspx$ / [R=301,L,NC]
+RewriteRule ^WhatsappBulkSMSglobal\.aspx$ /bulk-whatsapp-messages-global [R=301,L,NC]
+RewriteRule ^(BulkSmsOrder|PayOnline|TermsConditions|default|default1|AlertActivate|AlertNotActivate|AlertBlock|Activate|Activate1|Activate_RD3|Reseller|Requestdemo|Requestdemo2|SignUp_RD3|SignUp|Requestdemo3|BulkVoiceCalls|ForgetPassword|InternationalBulkSMS|PrivacyPolicy|WhatsappBulkSMSindia|SimBulkSMS|SimbasedpromoBulkSMS|Default)\.aspx$ / [R=301,L,NC]
+#Redirect termsandconditions URLs
+RewriteRule ^termsandconditions/?$ /terms-and-conditions [R=301,L,NC]
+# Redirect /index and /index.php to homepage
+RewriteRule ^index/?$ / [R=301,L]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Redirect /home to homepage
+RewriteRule ^home/?$ / [R=301,L]
+
+# Redirect .php URLs to clean URLs
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php[\s?] [NC]
+RewriteCond %1 !^(login_check|razorpay_update|register|save_user|logout|email|dashboard|change_password)$ [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+
+
+# Exclude these PHP files from clean URL rewrite
+RewriteCond %{REQUEST_URI} !^/(login_check|razorpay_update|register|save_user|logout|email|dashboard|change_password)\.php$ [NC]
+
+# Remove .php extension from URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
